@@ -74,10 +74,11 @@ const CostumerAddView = ()=> {
           <Header as='h3'>Cuentas de paquetería</Header>
           <Form.Group>
             <Select 
-            placeholder='Paquetería'
+            placeholder='Paquetería...'
             options={parcels}
-            defaultValue={parcels[0].id}
-            value={parcels[0].id}/>
+            //defaultValue={parcels[0].id}
+            //value={parcels[0].id}
+            />
             <Button color='green' icon>
               <Icon name='add'/>
             </Button>
