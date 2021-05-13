@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_COSTUMERS_SEARCH, GET_COSTUMER_BY_ID, GET_USERS_SEARCH, ADD_COSTUMER, EDIT_COSTUMER, EDIT_PACKAGE, GET_USER_BY_ID, GET_ROLE_LIST } from "./graphql/queries";
+import {GET_COSTUMERS_SEARCH, GET_COSTUMER_BY_ID, GET_USERS_SEARCH, ADD_COSTUMER, EDIT_COSTUMER, EDIT_PACKAGE, GET_USER_BY_ID, GET_ROLE_LIST, EDIT_USER } from "./graphql/queries";
 
 const costumersSearchById = id => (
   axios.post(process.env.REACT_APP_API_URL, {
@@ -128,8 +128,27 @@ const updateCostumer = (id, firstName, middleName, lastName, secondLastName,full
     }
   })
   .then(({data}) => {
-    console.log(data.data.editCostumer);
+    //console.log(data.data.editCostumer);
     return data.data.costumer;
+  })
+  .catch(error =>{
+    console.log(error);
+  })
+);
+
+const updateUser = (id, email, password, roleId) => (
+  axios.post(process.env.REACT_APP_API_URL, {
+    query: EDIT_USER,
+    variables: {
+      id,
+      email,
+      password,
+      roleId
+    }
+  })
+  .then(({data}) => {
+    console.log(data.data.editUser);
+    return data.data.user;
   })
   .catch(error =>{
     console.log(error);
@@ -171,5 +190,6 @@ export {
   updateCostumer,
   updateCostumerPackage,
   UserSearchById,
-  roleList
+  roleList,
+  updateUser
 }
