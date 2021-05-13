@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_COSTUMERS_SEARCH, GET_COSTUMER_BY_ID, GET_USERS_SEARCH, ADD_COSTUMER, EDIT_COSTUMER, EDIT_PACKAGE, GET_USER_BY_ID, GET_ROLE_LIST, EDIT_USER } from "./graphql/queries";
+import {GET_COSTUMERS_SEARCH, GET_COSTUMER_BY_ID, GET_USERS_SEARCH, ADD_COSTUMER, EDIT_COSTUMER, EDIT_PACKAGE, GET_USER_BY_ID, GET_ROLE_LIST, EDIT_USER, GET_PARCELS_LIST } from "./graphql/queries";
 
 const costumersSearchById = id => (
   axios.post(process.env.REACT_APP_API_URL, {
@@ -181,6 +181,25 @@ const roleList = ()=>(
   .catch(error => console.log(error))
 );
 
+const addCostumer = (email, password, roleId)=> (
+  axios.post(process.env.REACT_APP_API_URL, {
+    query: EDIT_COSTUMER,
+    variables: {
+      email,
+      password,
+      roleId
+    }
+  })
+  .then(({data}) => data.data.costumer)
+  .catch(error => console.log(error))
+);
+
+const getParcellist = ()=> (
+  axios.post(process.env.REACT_APP_API_URL, { query: GET_PARCELS_LIST})
+  .then(({data}) => data.data.parcels)
+  .catch(error => console.log(error))
+);
+
 export {
   costumersSearchById,
   costumersSearchCall,
@@ -191,5 +210,7 @@ export {
   updateCostumerPackage,
   UserSearchById,
   roleList,
-  updateUser
+  updateUser,
+  addCostumer,
+  getParcellist
 }

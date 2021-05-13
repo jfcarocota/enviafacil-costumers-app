@@ -158,6 +158,33 @@ query{
 }
 `;
 
+const ADD_USER = `
+mutation($email: String!, $password: String!, $roleId: String!){
+  addUser(email: $email, password: $password, roleId: $roleId){
+    id
+    email
+    password
+    role{
+      id
+      name
+      permissions{
+        id
+        name
+      }
+    }
+  }
+}
+`;
+
+const GET_PARCELS_LIST = `
+query{
+  parcels{
+    id
+    name
+  }
+}
+`;
+
 export {
   AUTHENTICATE,
   GET_COSTUMERS_SEARCH,
@@ -165,9 +192,11 @@ export {
   GET_USERS_SEARCH,
   ADD_COSTUMER,
   ADD_PACKAGE,
+  ADD_USER,
   EDIT_COSTUMER,
   EDIT_PACKAGE,
   EDIT_USER,
   GET_USER_BY_ID,
-  GET_ROLE_LIST
+  GET_ROLE_LIST,
+  GET_PARCELS_LIST
 }

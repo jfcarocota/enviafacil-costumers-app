@@ -21,6 +21,11 @@ const MenuBar = ({itemSelected})=> {
     history.push('/costumerssearch');
   }
 
+  const HandleAddCostumers = (e, { name }) => {
+    setActiveItem(name);
+    history.push('/addcostumer');
+  }
+
   const HandleSearchUsers = (e, { name }) => {
     setActiveItem(name);
     history.push('/usersssearch');
@@ -34,6 +39,11 @@ const MenuBar = ({itemSelected})=> {
       name='Buscar Clientes'
       active={activeItem === 'Buscar Clientes'}
       onClick={HandleSearchCostumers}
+    />
+    <Menu.Item
+      name='Agregar Clientes'
+      active={activeItem === 'Agregar Clientes'}
+      onClick={HandleAddCostumers}
     />
     <Menu.Item
       name='Buscar Empleados'
