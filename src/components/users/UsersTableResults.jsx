@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Pagination, Table, Icon, Button, Container } from 'semantic-ui-react'
-import { costumersSearchTableCall, usersSearchCall } from '../../api';
+import {usersSearchCall } from '../../api';
 import BaseComponent from '../BaseComponent';
 
 const UsersTableResults = (props)=> {

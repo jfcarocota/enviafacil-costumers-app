@@ -12,16 +12,13 @@ const CostumerSelectedView = ()=> {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  //const [costumer, setCostumer] = useState({});
   const [accounts, setAccounts] = useState([]);
 
 
 
   useEffect(()=>{
     console.log(history.location.state.id);
-    //setId(history.location.state.id);
     costumersSearchById(history.location.state.id).then(costumer =>{
-      //setCostumer(costumer);
       setId(costumer.id);
       setName(costumer.fullName);
       setEmail(costumer.email);
@@ -45,7 +42,7 @@ const CostumerSelectedView = ()=> {
   const clickUpdate = ()=> {
     setFormEnabled(true);
     const splitName = name.split(' ');
-    console.log({id, name, phone, email});
+    //console.log({id, name, phone, email});
     updateCostumer(id, splitName[0], splitName[1], splitName[2], splitName[3], name, phone, email)
     .then(costumer => {
       console.log(costumer);

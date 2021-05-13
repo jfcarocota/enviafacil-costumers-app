@@ -116,18 +116,12 @@ mutation($id: ID!, $account: String!, $password: String!, $costumerId: ID!, $par
 `;
 
 const EDIT_USER = `
-mutation($id: ID!, email: String!, password: String!, roleId: ID!){
+mutation($id: ID!, $email: String!, $password: String!, $roleId: ID!){
   editUser(id: $id, email: $email, password: $password, roleId: $roleId){
-    id
     email
     password
     role{
-      id
       name
-      permissions{
-        id
-        name
-      }
     }
   }
 }

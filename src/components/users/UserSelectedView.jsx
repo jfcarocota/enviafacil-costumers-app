@@ -11,7 +11,6 @@ const UserSelectedView = ()=> {
   const [formEnabled, setFormEnabled] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState({});
   const[roleOptions, setRoleOptions] = useState([]);
   const [permissions, setPermissions] = useState([]);
   const [roleId, setRoleId] = useState('');
@@ -20,18 +19,15 @@ const UserSelectedView = ()=> {
 
   useEffect(()=>{
     console.log(history.location.state.id);
-    //setId(history.location.state.id);
     UserSearchById(history.location.state.id).then(user =>{
-      //setCostumer(costumer);
-      setId(history.location.state.id);
+      setId(user.id);
       setEmail(user.email);
       setPassword(user.password);
-      setRole(user.role);
       setRoleId(user.role.id);
       setPermissions(user.role.permissions);
       console.log(user);
       roleList().then(roles => {
-        console.log(roles);
+        //console.log(roles);
         setRoleOptions(roles.map(item =>({ key: item.id, value: item.id, text: item.name})))
       });
     });
@@ -47,27 +43,13 @@ const UserSelectedView = ()=> {
 
   const clickUpdate = ()=> {
     setFormEnabled(true);
-    console.log({id, email, password, roledId: role.id});
-    /*updateUser(id, email, password, role.id)
-    .then( user => console.log(user));
-    /*const splitName = name.split(' ');
-    console.log({id, name, phone, email});
-    updateCostumer(id, splitName[0], splitName[1], splitName[2], splitName[3], name, phone, email)
-    .then(costumer => {
-      console.log(costumer);
-      accounts.forEach((item) =>{
-        console.log(item);
-        updateCostumerPackage(item.id, item.account, item.password, id, item.parcel.id)
-        .then(acc => console.log(acc));
-      });
-    });*/
+    console.log({id, email, password, roleId});
+    updateUser(id, email, password, roleId)
+    .then( user => {
+      //console.log(user);
+      window.location.reload();
+    });
   }
-
-  /*const handleNameChange = ({target}) => setName(target.value);
-  const handleEmailChange = ({target}) => setEmail(target.value);
-  const handlePhoneChange = ({target}) => setPhone(target.value);
-
-  useEffect(()=> console.log(accounts), [accounts]);*/
 
   return (
     <BaseComponent itemSelected='Buscar Empleados' children={

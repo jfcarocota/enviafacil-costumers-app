@@ -148,7 +148,7 @@ const updateUser = (id, email, password, roleId) => (
   })
   .then(({data}) => {
     console.log(data.data.editUser);
-    return data.data.user;
+    return data.data.editUser;
   })
   .catch(error =>{
     console.log(error);
