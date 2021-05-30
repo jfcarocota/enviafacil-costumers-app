@@ -7,7 +7,7 @@ import BaseComponent from '../BaseComponent';
 const CostumerAddView = ()=> {
   const history = useHistory();
 
-  const [formEnabled, setFormEnabled] = useState(true);
+  const [formEnabled, setFormEnabled] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -31,9 +31,25 @@ const CostumerAddView = ()=> {
   };
 
   const clickCreate = ()=> {
-    setFormEnabled(true);
+    //setFormEnabled(true);
     const splitName = name.split(' ');
 
+    const formData = {
+      firstName: splitName[0],
+      middleName: splitName[1],
+      lastName: splitName[2],
+      secondLastName: splitName[3],
+      fullName: name,
+      phonNumber: phone,
+      email
+    }
+
+    console.log(formData);
+
+    /*
+    firstName: $firstName, middleName: $middleName, lastName: $lastName,
+    secondLastName: $secondLastName, fullName: $fullName, phonNumber: $phonNumber, email: $email
+    */
 
 
     //console.log({id, name, phone, email});

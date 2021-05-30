@@ -61,7 +61,7 @@ query($id: ID!){
 const ADD_COSTUMER = `
 mutation($firstName: String!, $middleName: String!, $lastName: String!,
 $secondLastName: String!, $fullName: String!, $phonNumber: String!, $email: String!){
-    addCostumer(firstName: $firstName, middleName: $middleName, lastName: $lastName, 
+    addCostumer(firstName: $firstName, middleName: $middleName, lastName: $lastName,
     secondLastName: $secondLastName, fullName: $fullName, phonNumber: $phonNumber, email: $email){
         id
         firstName
